@@ -20,7 +20,7 @@ parts:
     source: https://github.com/teejee2008/polo/archive/v18.3-beta.tar.gz
     build-packages:
       - libgee-0.8-dev
-      - libvted-3-dev
+      - libvte-2.91-dev
       #- gnome-doc-utils
       #- gob2
       - libgtk3.0-dev
