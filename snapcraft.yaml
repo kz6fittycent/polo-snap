@@ -1,0 +1,53 @@
+name: polo
+version: '18.3.1b'
+summary: Polo File Manager
+description: |
+  Advanced file manager for Linux written in Vala. Supports multiple panes (single, dual, quad) with multiple tabs in each pane. Supports archive creation, extraction and browsing. Support for cloud storage; running and managing KVM images, modifying PDF documents and image files, booting ISO files in KVM, and writing ISO files to USB drives.
+grade: devel #stable once ready
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+  polo:
+    command: bin/polo
+    plugs:
+      - unity7
+      - x11
+      - network
+
+parts:
+  client:
+    plugin: nil
+    source: https://github.com/teejee2008/polo/archive/v18.3-beta.tar.gz
+    build-packages:
+      - libgee-0.8-dev
+      - libvted-3-dev
+      #- gnome-doc-utils
+      #- gob2
+      - libgtk3.0-dev
+      #- libmpd-dev
+      - libsoup2.4-dev
+      #- libsqlite3-dev
+      #- libunique-dev
+      - valac
+    stage-packages:
+      - p7zip
+      - gvfs
+      - rsync
+      ##- libc6
+      #- libgtk2.0-0
+      #- libmpd1
+      #- libsoup2.4-1
+      #- libsqlite3-0
+      #- xdg-utils
+      #- libgcc1 
+      #- libgl1-mesa-glx
+      #- libgl1
+      #- libglib2.0-0
+      #- libqjson0
+      #- libstdc++6
+      #- libx11-6
+      #- zlib1g
+    build: |
+      make
+    install: |
+      DESTDIR=$SNAPCRAFT_PART_INSTALL make install
