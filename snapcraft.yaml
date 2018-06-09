@@ -13,22 +13,25 @@ apps:
       - unity7
       - x11
       - network
+      - desktop
+      - desktop-legacy
+      - gsettings
+      - home
 
 parts:
   client:
     plugin: nil
     source: https://github.com/teejee2008/polo/archive/v18.3-beta.tar.gz
+    
     build-packages:
+      - autotools-dev
+      - valac
+      - libgtk-3-dev
       - libgee-0.8-dev
       - libvte-2.91-dev
-      #- gnome-doc-utils
-      #- gob2
-      - libgtk3.0-dev
-      #- libmpd-dev
-      - libsoup2.4-dev
-      #- libsqlite3-dev
-      #- libunique-dev
-      - valac
+      - libjson-glib-dev
+      - libxml2-dev
+      
     stage-packages:
       - p7zip
       - gvfs
@@ -36,20 +39,28 @@ parts:
       - rclone
       - pv
       - lzop
-      ##- libc6
-      #- libgtk2.0-0
-      #- libmpd1
-      #- libsoup2.4-1
-      #- libsqlite3-0
-      #- xdg-utils
-      #- libgcc1 
-      #- libgl1-mesa-glx
-      #- libgl1
-      #- libglib2.0-0
-      #- libqjson0
-      #- libstdc++6
-      #- libx11-6
-      #- zlib1g
+      - libvte-2.91
+      - libgee-0.8-2
+      - libvte-2.91-0
+      - libjson-glib-1.0-0
+      - libxml2
+      - ffmpeg
+      - mediainfo
+      - p7zip-full
+      - p7zip-rar
+      - tar
+      - gzip 
+      - pigz
+      - bzip2 
+      - pbzip2
+      - xz-utils
+      - fish
+      - qemu-kvm
+      - qemu-utils
+      - gvfs-bin
+      - gvfs-backends
+      - wget
+
     build: |
       make
     install: |
